@@ -1,30 +1,24 @@
-package com.pokeapp.pokeshop.sanity;
+package com.pokeapp.pokeshop.inventory.product;
 
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
-public class HttpLogic {
+public class ApiService {
     @Value("${api.baseUrl}")
-    String url;
+    public String url;
 
 
-    private HttpLogic(String url) {
+    private ApiService(String url) {
         this.url = url;
     }
 
-    public static HttpLogic createInstance(String url) {
-        return new HttpLogic(url);
+    public static ApiService createInstance(String url) {
+        return new ApiService(url);
     }
 
     public int getResponseCode() throws IOException {
