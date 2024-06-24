@@ -19,6 +19,7 @@ public class ProductService {
 
     @Value("${api.baseUrl}")
     @Getter private String baseUrl = "https://pokeapi.co/api/v2";
+    private String productsUrl = "/pokemon/?limit=151/";
 
     @Getter @Setter private String requestedUrl;
 
@@ -49,9 +50,9 @@ public class ProductService {
     }
 
 
-    public String getData(String url) throws IOException, URISyntaxException {
+    public String getData() throws IOException, URISyntaxException {
         String inputLine;
-        HttpURLConnection conn = this.get(url);
+        HttpURLConnection conn = this.get(this.productsUrl);
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder content = new StringBuilder();
         while ((inputLine = br.readLine()) != null) {

@@ -19,10 +19,12 @@ public class SanityTests {
     void checkDataReturnedFromAPI() throws IOException, URISyntaxException {
         String url = "/pokemon/?limit=151/";
         ProductService productService = ProductService.createInstance();
-        String results = productService.getData(url);
+        // TODO : need to have good place to call URL
+        String results = productService.getData();
         assertEquals(productService.getBaseUrl() + url, productService.getRequestedUrl());
         assertNotNull(results, "Results are empty");
     }
+
 
 }
 
