@@ -1,6 +1,3 @@
-package com.pokeapp.pokeshop.it;
-
-
 import com.pokeapp.pokeshop.inventory.product.ProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

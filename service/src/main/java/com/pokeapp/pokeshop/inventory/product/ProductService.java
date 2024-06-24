@@ -26,7 +26,6 @@ public class ProductService {
 
     public static ProductService createInstance() { return new ProductService();}
 
-// TODO: create sendURL extraction
 
     public HttpURLConnection get() throws URISyntaxException, IOException {
         HttpURLConnection conn;
@@ -62,7 +61,7 @@ public class ProductService {
     }
 
     public JsonObject stringToJson(String string){
-//        TODO: Gson
+//        TODO: Gson Class
         return JsonParser.parseString(string).getAsJsonObject();
     }
 
