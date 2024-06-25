@@ -1,5 +1,6 @@
 package com.pokeapp.pokeshop.inventory.product;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import lombok.Getter;
@@ -50,7 +51,7 @@ public class ProductService {
     }
 
 
-    public String getData() throws IOException, URISyntaxException {
+    public JsonObject getData() throws IOException, URISyntaxException {
         String inputLine;
         HttpURLConnection conn = this.get(this.productsUrl);
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -58,7 +59,8 @@ public class ProductService {
         while ((inputLine = br.readLine()) != null) {
             content.append(inputLine);
         }
-        return content.toString();
+
+        return JsonParser.parseString(content.toString()).getAsJsonObject();
     }
 
     public JsonObject stringToJson(String string){

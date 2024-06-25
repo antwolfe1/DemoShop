@@ -1,5 +1,8 @@
 package com.pokeapp.pokeshop.inventory.product;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -15,9 +18,10 @@ public class ProductDALTests {
         int expectedProductLength = 151;
         String expectedProductName = "bulbasaur";
         ProductDAL productDAL = ProductDAL.createInstance();
-        List<String> actualProducts = productDAL.getAll();
+        List<JsonObject> actualProducts = productDAL.getAll();
+        String actualName = actualProducts.get(0).get("name").getAsString();
         assertEquals(actualProducts.size(), expectedProductLength);
-        assertEquals(actualProducts.get(0), expectedProductName);
+        assertEquals(actualName, expectedProductName);
 
     }
 }
