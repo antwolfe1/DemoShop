@@ -1,5 +1,6 @@
 package com.pokeapp.pokeshop.inventory.product;
 
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.pokeapp.pokeshop.inventory.InventoryRepository;
@@ -9,29 +10,29 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAL {
+public class ProductRepository {
     // Repository
     private InventoryRepository inventoryRepository = InventoryRepository.createInstance();
 
-    private ProductDAL() {
+    private ProductRepository() {
     }
 
-    public static ProductDAL createInstance() {
-        return new ProductDAL();
+    public static ProductRepository createInstance() {
+        return new ProductRepository();
     }
 
 
-    public List<JsonObject> getAll() throws IOException, URISyntaxException {
+    public List<Product> getAll() throws IOException, URISyntaxException {
         // retrieve all products from repo/api
         JsonObject productList = this.inventoryRepository.getAll();
-        List<JsonObject> products = new ArrayList<>(List.of());
+        List<Product> products = new ArrayList<>(List.of());
         JsonArray results = productList.getAsJsonArray("results");
+//        System.out.println(new GsonBuilder().create().fromJson(results.toString(), Product.class));
 
         for (int ele = 0; ele < results.size(); ele++) {
-            JsonObject product = results.get(ele).getAsJsonObject();
+            Product product = new GsonBuilder().create().fromJson(results.get(ele), Product.class);
             products.add(product);
         }
-
         return products;
     }
 

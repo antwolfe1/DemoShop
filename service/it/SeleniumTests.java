@@ -1,5 +1,6 @@
 import com.google.gson.JsonObject;
 import com.pokeapp.pokeshop.inventory.InventoryRepository;
+import com.pokeapp.pokeshop.inventory.product.Product;
 import com.pokeapp.pokeshop.inventory.product.ProductController;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -37,7 +38,7 @@ public class SeleniumTests {
         WebDriver driver = new ChromeDriver(options);
         driver.get("http://localhost:3000/products");
         ProductController productController = ProductController.createInstance();
-        List<JsonObject> expectedList = productController.getAll();
+        List<Product> expectedList = productController.getAll();
         List<WebElement> pageProducts = driver.findElements(By.className("products"));
         assertEquals(expectedList, pageProducts);
         driver.close();
