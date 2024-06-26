@@ -1,5 +1,6 @@
 package com.pokeapp.pokeshop.inventory.product;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
