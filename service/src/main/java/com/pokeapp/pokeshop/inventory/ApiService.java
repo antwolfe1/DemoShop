@@ -50,7 +50,7 @@ public class ApiService {
         HttpURLConnection conn;
         String combinedUrl = this.baseUrl + url;
         this.setRequestedUrl(combinedUrl);
-        System.out.println("getOverloadedFunction: " + this.getRequestedUrl());
+//        System.out.println("getOverloadedFunction: " + this.getRequestedUrl());
         URL requestedUrl = new URI(this.getRequestedUrl()).toURL();
         conn = (HttpURLConnection) requestedUrl.openConnection();
         conn.setRequestMethod("GET");

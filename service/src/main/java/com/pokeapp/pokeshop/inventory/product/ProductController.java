@@ -24,7 +24,7 @@ public class ProductController {
 
 
     public List<Product> getAll() throws IOException, URISyntaxException {
-        System.out.println(this.productRepository.getAll());
+        System.out.println(this.productRepository.getAll().getClass());
         return this.productRepository.getAll();
 //        ResponseEntity<JsonObject> responseEntity = new RestTemplate().getForEntity(ApiService.createInstance().getProductsUrl(), JsonObject.class);
 //        JsonObject object = responseEntity.getBody();
