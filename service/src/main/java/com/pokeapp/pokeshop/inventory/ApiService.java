@@ -1,14 +1,17 @@
 package com.pokeapp.pokeshop.inventory;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
+import com.pokeapp.pokeshop.inventory.product.Product;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -20,7 +23,7 @@ public class ApiService {
     @Value("${api.baseUrl}")
     @Getter
     private String baseUrl = "https://pokeapi.co/api/v2";
-    private String productsUrl = "/pokemon/?limit=151/";
+    @Getter private String productsUrl = "/pokemon/?limit=151/";
 
     @Getter
     @Setter
@@ -47,12 +50,25 @@ public class ApiService {
         HttpURLConnection conn;
         String combinedUrl = this.baseUrl + url;
         this.setRequestedUrl(combinedUrl);
-        System.out.println(this.getRequestedUrl());
+        System.out.println("getOverloadedFunction: " + this.getRequestedUrl());
         URL requestedUrl = new URI(this.getRequestedUrl()).toURL();
         conn = (HttpURLConnection) requestedUrl.openConnection();
         conn.setRequestMethod("GET");
         return conn;
     }
+
+
+//    public JsonObject getData() {
+//        String url = this.getBaseUrl() + this.getProductsUrl();
+//        ResponseEntity<Product> responseEntity = new RestTemplate().getForEntity(url, Product.class);
+//        System.out.println(responseEntity.);
+//        Product object = responseEntity.getBody();
+//        System.out.println(object);
+////        MediaType conType = responseEntity.getHeaders().getContentType();
+////        HttpStatus status = (HttpStatus) responseEntity.getStatusCode();
+//        return new JsonObject();
+////        return object;
+//    }
 
 
     public JsonObject getData() throws IOException, URISyntaxException {

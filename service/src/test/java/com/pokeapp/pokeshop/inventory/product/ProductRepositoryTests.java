@@ -1,7 +1,5 @@
 package com.pokeapp.pokeshop.inventory.product;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.Test;
 
@@ -11,15 +9,15 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ProductDALTests {
+public class ProductRepositoryTests {
 
     @Test
     void getAllShouldReturnListOfProducts() throws IOException, URISyntaxException {
         int expectedProductLength = 151;
         String expectedProductName = "bulbasaur";
-        ProductDAL productDAL = ProductDAL.createInstance();
-        List<JsonObject> actualProducts = productDAL.getAll();
-        String actualName = actualProducts.get(0).get("name").getAsString();
+        ProductRepository productRepository = ProductRepository.createInstance();
+        List<Product> actualProducts = productRepository.getAll();
+        String actualName = actualProducts.get(0).getName();
         assertEquals(actualProducts.size(), expectedProductLength);
         assertEquals(actualName, expectedProductName);
 
