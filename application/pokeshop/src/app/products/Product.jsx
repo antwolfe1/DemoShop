@@ -1,15 +1,15 @@
 import { Box } from "@mui/material";
 
-export default function Product() {
+export default function Product({ product }) {
   return (
     <Box
       className="product"
-      display="flex"
-      sx={{ p: 5, border: "3px solid black" }}
-      maxWidth={200}
+      sx={{ p: 5, border: "3px solid black", padding: "50px" }}
+      width={"auto"}
       alignItems={"center"}
+
     >
-      <text className="product-name">A Product</text>
+      <text data-testid-="product-name" className="product-name">{product.name}</text>
     </Box>
   );
 }
