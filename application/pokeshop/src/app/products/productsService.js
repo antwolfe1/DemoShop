@@ -1,8 +1,8 @@
-const route = require('./api/route');
+const get = require('./api/productServerProxy');
 
 function getProducts() {
-    let productsArray = [];
-    route().get();
+    let productsArray = get();
+    console.log(productsArray);
     return productsArray;
   }
   

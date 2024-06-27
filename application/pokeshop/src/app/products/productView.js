@@ -1,9 +1,8 @@
-const productsLogic = require('./productsLogic');
+const getAllProducts = require('./productsLogic');
 
 
-function getProducts(){
-    let productsArray = [];
-    productsLogic().getProducts();
+async function getProducts(){
+    let productsArray = await getAllProducts();
     return productsArray;
 }
 

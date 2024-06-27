@@ -33,8 +33,8 @@ public class ProductRepository {
             Product product = new GsonBuilder().create().fromJson(results.get(ele), Product.class);
             products.add(product);
         }
-        System.out.println(products);
-        System.out.println(products.getClass());
+//        System.out.println(products);
+//        System.out.println(products.getClass());
         return products;
     }
 

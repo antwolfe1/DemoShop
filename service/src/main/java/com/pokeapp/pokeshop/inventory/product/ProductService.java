@@ -19,11 +19,6 @@ public class ProductService {
 
     @GetMapping("/products")
     public List<Product> getProducts() throws IOException, URISyntaxException {
-//        Product product = new Product();
-//        product.setName("anthony");
-//        product.setUrl("http://hahaha.org");
-//        return List.of(product);
-//        return "Helloo?";
         return ProductController.createInstance().getAll();
     }
 

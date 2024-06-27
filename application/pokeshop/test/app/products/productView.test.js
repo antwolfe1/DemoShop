@@ -1,7 +1,15 @@
 const getProducts = require('../../../src/app/products/productView');
 
 
-test('getProducts returns array of objects', () => {
+test('getProducts returns non-empty array of objects', async () => {
     expectedArray = [];
-    expect(getProducts().length).toBeGreaterThan(0);
+    let actualProducts = await getProducts();
+    expect(actualProducts.length).toBeGreaterThan(0);
+    expect(actualProducts[0].name).toBe('bulbasaur')
+})
+
+test('getProducts returns "bulbasaur" as first entry', async () => {
+    expectedArray = [];
+    let actualProducts = await getProducts();
+    expect(actualProducts[0].name).toBe('bulbasaur')
 })

@@ -1,9 +1,9 @@
-const productsService = require("./productsService");
+const get = require('./api/productServerProxy');
 
-function getProducts() {
-  let productsArray = [];
-  productsService().getProducts();
+
+async function getAllProducts() {
+  const productsArray = await get();
   return productsArray;
 }
 
-module.exports = getProducts;
+module.exports = getAllProducts;
