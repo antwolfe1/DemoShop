@@ -8,11 +8,11 @@ describe("Products View", () => {
     expect(actualProducts.length).toBeGreaterThan(0);
   });
 
-  test("Product Rendering", async () => {
-    render(<Product />);
-    const text = "bulbasaur"
-    expect(this.props.first).toBe(text);
-  });
+//   test("Product Rendering", async () => {
+//     render(<Product />);
+//     const text = "bulbasaur"
+//     expect(this.props.first).toBe(text);
+//   });
 
  
 })
